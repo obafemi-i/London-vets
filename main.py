@@ -3,15 +3,17 @@ from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 import csv, re, json, time
 
+JSON_file_name = 'sample'
+CSV_file_name = 'sample'
 
 def export_to_json(products: list):
-    with open('sample.json', 'w', encoding='utf-8') as f:
+    with open(f'{JSON_file_name}.json', 'w', encoding='utf-8') as f:
         json.dump(products, f, ensure_ascii=False, indent=4)
 
 
 def export_to_csv(products: list):
     field_names = ['Name', 'Address', 'Description', 'Website']
-    with open('sample.csv', 'w') as f:
+    with open(f'{CSV_file_name}.csv', 'w') as f:
         writer = csv.DictWriter(f, fieldnames=field_names)
         writer.writeheader()
         writer.writerows(products)
